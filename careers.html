@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melitrix, Careers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css?v=3">
+<style>
+  .careers-section { padding: 100px 5%; background: white; }
+  .careers-wrap {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .careers-lede {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--slate);
+    font-weight: 300;
+    margin-bottom: 48px;
+    text-wrap: pretty;
+  }
+  .careers-lede strong { color: var(--navy); font-weight: 600; }
+
+  .roles-empty {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 56px 48px;
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .roles-empty-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .roles-empty-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--slate);
+    font-weight: 300;
+    max-width: 540px;
+    margin: 0 auto 24px;
+  }
+
+  .principles {
+    margin-top: 72px;
+    padding-top: 56px;
+    border-top: 1px solid var(--border);
+  }
+  .principles-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 28px;
+  }
+  .principles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 36px;
+  }
+  .principle h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .principle p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--slate);
+    font-weight: 300;
+  }
+
+  @media (max-width: 700px) {
+    .principles-grid { grid-template-columns: 1fr; }
+    .roles-empty { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<header class="page-header" data-screen-label="Careers / Header">
+  <div class="container">
+    <div class="crumb reveal">
+      <a href="index.html">Home</a>
+      <span class="crumb-sep">/</span>
+      <span>Careers</span>
+    </div>
+    <div class="eyebrow reveal">Careers</div>
+    <h1 class="reveal reveal-delay-1">Build the next generation of life science.</h1>
+    <p class="page-sub reveal reveal-delay-2">We're a small team of operators with broad range and high standards. If you've operated at the intersection of science, regulation, and commercial reality, we'd like to meet you.</p>
+  </div>
+</header>
+
+<section class="careers-section" data-screen-label="Careers / Body">
+  <div class="careers-wrap">
+
+    <p class="careers-lede reveal">Melitrix is in early build mode. We hire selectively, based on <strong>conviction in the integrated platform thesis</strong> and demonstrated execution across pharmaceutical development, medical devices, regulatory affairs, manufacturing, or life-science capital.</p>
+
+    <div class="roles-empty reveal reveal-delay-1">
+      <div class="roles-empty-title">No open roles at this time.</div>
+      <p class="roles-empty-text">We are not actively recruiting today, but we keep a short list of operators we'd like to work with as the platform scales. If that sounds like you, we want to hear from you.</p>
+      <a href="mailto:info@melitrix.net?subject=Careers%20at%20Melitrix" class="btn btn-primary">Introduce Yourself →</a>
+    </div>
+
+    <div class="principles">
+      <div class="principles-title reveal">How we hire</div>
+      <div class="principles-grid">
+        <div class="principle reveal">
+          <h4>Range over specialization</h4>
+          <p>We value operators who have crossed disciplines, science to commercial, regulation to capital, manufacturing to strategy. Depth matters. So does the willingness to learn the next adjacent domain.</p>
+        </div>
+        <div class="principle reveal reveal-delay-1">
+          <h4>Demonstrated outcomes</h4>
+          <p>Programs delivered, products launched, dossiers filed, audits passed. We weight track record and judgment higher than credentials.</p>
+        </div>
+        <div class="principle reveal reveal-delay-2">
+          <h4>Trust as a baseline</h4>
+          <p>We invest in long, candid relationships with the people we work with. Quality of character is non-negotiable.</p>
+        </div>
+        <div class="principle reveal reveal-delay-3">
+          <h4>Patient orientation</h4>
+          <p>Every role at Melitrix exists in service of patient outcomes. We expect new team members to share that orientation from day one.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer" id="site-footer"></footer>
+<div id="site-tweaks"></div>
+
+<script src="assets/chrome.js"></script>
+<script src="assets/shared.js"></script>
+<script>MelitrixChrome.mount('careers');</script>
+</body>
+</html>

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melitrix, Asset Classes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css?v=2">
+<style>
+  /* Asset detail blocks */
+  .asset-block { padding: 100px 5%; position: relative; }
+  .asset-block:nth-child(even) { background: var(--paper); }
+  .asset-block-inner {
+    max-width: 1240px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .asset-block.reverse .asset-block-inner { grid-template-columns: 1fr 1fr; }
+  .asset-block.reverse .asset-block-media { order: -1; }
+
+  .asset-block-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--sky);
+    letter-spacing: 0.2em;
+    margin-bottom: 14px;
+  }
+  .asset-block h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 18px;
+    text-wrap: balance;
+  }
+  .asset-block .lead {
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--slate);
+    font-weight: 300;
+    margin-bottom: 28px;
+    text-wrap: pretty;
+  }
+  .asset-detail-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+  .asset-detail-list li {
+    display: flex; gap: 14px; align-items: flex-start;
+    font-size: 0.92rem; color: var(--slate-dark);
+    line-height: 1.6;
+  }
+  .asset-detail-list li::before {
+    content: ''; flex-shrink: 0;
+    width: 18px; height: 18px; margin-top: 3px;
+    border-radius: 50%;
+    background: var(--ice);
+    border: 1.5px solid var(--blue);
+    position: relative;
+  }
+  .asset-detail-list li strong { color: var(--navy); font-weight: 600; }
+
+  .pathway-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+  .pathway-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 100px;
+    background: var(--ice);
+    color: var(--blue);
+    border: 1px solid var(--border);
+  }
+  .pathway-tag.accent {
+    background: #fff4e0;
+    color: #8a6200;
+    border-color: #f0d490;
+  }
+
+  /* Media card */
+  .asset-block-media {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 5 / 6;
+    box-shadow: var(--shadow-lg);
+    background: var(--navy);
+  }
+  .asset-block-media img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s;
+  }
+  .asset-block-media:hover img { transform: scale(1.04); }
+  .asset-block-media::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10,37,64,0.7) 100%);
+  }
+  .media-badge {
+    position: absolute;
+    bottom: 24px; left: 24px; right: 24px;
+    z-index: 2;
+    color: white;
+  }
+  .media-badge-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 6px;
+    color: var(--sky-light);
+  }
+  .media-badge-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  /* Sub-panel for pharma sub-classes */
+  .subclass-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+  .subclass {
+    padding: 22px 24px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    position: relative;
+  }
+  .subclass::before {
+    content: '';
+    position: absolute; top: 0; left: 0; bottom: 0;
+    width: 3px; border-radius: 12px 0 0 12px;
+    background: var(--sky);
+  }
+  .subclass.accent::before { background: var(--gold); }
+  .subclass-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 8px;
+  }
+  .subclass.accent .subclass-label { color: #8a6200; }
+  .subclass-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .subclass-text {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--slate);
+    font-weight: 300;
+  }
+
+  /* Pipeline */
+  .pipeline-section {
+    background: var(--navy);
+    padding: 100px 5%;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .pipeline-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .pipeline-section .eyebrow { color: var(--sky-light); }
+  .pipeline-section .eyebrow::before { background: var(--sky-light); }
+  .pipeline-section .section-title { color: white; }
+  .pipeline-section .section-lead { color: rgba(255,255,255,0.7); }
+  .pipeline-container { position: relative; z-index: 2; }
+
+  .pipeline-table-wrap {
+    margin-top: 50px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .pipeline-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1.2fr 1fr 2.4fr;
+    gap: 0;
+    align-items: center;
+    padding: 22px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+  .pipeline-row:hover { background: rgba(255,255,255,0.04); }
+  .pipeline-row:last-child { border-bottom: none; }
+  .pipeline-header {
+    background: rgba(255,255,255,0.05);
+    padding: 16px 28px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .program-code {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+  }
+  .program-category {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+  }
+  .asset-class-cell {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+  .asset-class-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-device { background: #8cd5ff; }
+  .dot-generic { background: #b891ff; }
+  .dot-505 { background: var(--gold); }
+  .pathway-chip {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  /* Stage bar */
+  .stage-track {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+    align-items: center;
+    max-width: 400px;
+  }
+  .stage-pill {
+    height: 6px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.1);
+    position: relative;
+  }
+  .stage-pill.done {
+    background: var(--sky);
+  }
+  .stage-pill.active {
+    background: var(--sky);
+    box-shadow: 0 0 0 3px rgba(0,155,222,0.3);
+  }
+  .stage-labels {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+    margin-top: 8px;
+    font-size: 0.64rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .stage-labels span { text-align: left; white-space: nowrap; }
+  .stage-labels span.current { color: var(--sky-light); }
+
+  /* Regulatory reference */
+  .reg-section { background: white; }
+  .reg-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 48px;
+  }
+  .reg-card {
+    background: white;
+    padding: 28px 26px;
+    transition: background 0.2s;
+  }
+  .reg-card:hover { background: var(--paper); }
+  .reg-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .reg-type {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 14px;
+  }
+  .reg-desc {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--slate);
+    font-weight: 300;
+  }
+
+  @media (max-width: 900px) {
+    .asset-block-inner,
+    .asset-block.reverse .asset-block-inner { grid-template-columns: 1fr; gap: 40px; }
+    .asset-block.reverse .asset-block-media { order: 0; }
+    .subclass-wrap { grid-template-columns: 1fr; }
+    .pipeline-row { grid-template-columns: 1fr; gap: 12px; }
+    .pipeline-header { display: none; }
+    .reg-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .reg-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<header class="page-header" data-screen-label="Asset Classes / Header">
+  <div class="container">
+    <div class="crumb reveal">
+      <a href="index.html">Home</a>
+      <span class="crumb-sep">/</span>
+      <span>Asset Classes</span>
+    </div>
+    <div class="eyebrow reveal">Platform</div>
+    <h1 class="reveal reveal-delay-1">Four asset classes, one unified thesis.</h1>
+    <p class="page-sub reveal reveal-delay-2">Melitrix operates an integrated platform spanning medical devices, pharmaceutical products, consulting services, and manufacturing investments, structured so each capability reinforces the others.</p>
+  </div>
+</header>
+
+<!-- 01 MEDICAL DEVICES -->
+<section class="asset-block" id="medical-devices" data-screen-label="Asset Classes / Medical Devices">
+  <div class="asset-block-inner">
+    <div>
+      <div class="asset-block-num reveal">01 · ASSET CLASS</div>
+      <h2 class="reveal reveal-delay-1">Medical Devices</h2>
+      <p class="lead reveal reveal-delay-2">Melitrix is a commercial-stage medical technology company specializing in advanced wound care solutions. Our flagship technology is FDA 510(k) cleared and currently available on the market, reflecting our commitment to clinical excellence and patient outcomes.</p>
+      <ul class="asset-detail-list reveal reveal-delay-3">
+        <li><span><strong>1 product, 510(k) cleared</strong>, currently in commercialization, our first marketed medical device asset.</span></li>
+        <li><span><strong>Diagnostic and therapeutic devices</strong>, designed for point-of-care and clinical settings with a focus on workflow integration.</span></li>
+        <li><span><strong>Monitoring and connected-health</strong>, additional programs in evaluation for the platform roadmap.</span></li>
+      </ul>
+      <div class="pathway-tags reveal reveal-delay-3">
+        <span class="pathway-tag">510(k) Cleared</span>
+        <span class="pathway-tag">CE Mark</span>
+        <span class="pathway-tag">ISO 13485</span>
+      </div>
+      <a href="contact.html" class="btn btn-outline">Discuss a device partnership</a>
+    </div>
+    <div class="asset-block-media reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1580281657527-47f249e8f4df?w=900&q=80" alt="Medical device engineering">
+      <div class="media-badge">
+        <div class="media-badge-tag">Capability</div>
+        <div class="media-badge-text">Class II & III device development across diagnostic, therapeutic, and monitoring domains.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PHARMACEUTICAL PRODUCTS -->
+<section class="asset-block reverse" id="pharmaceuticals" data-screen-label="Asset Classes / Pharmaceuticals">
+  <div class="asset-block-inner">
+    <div>
+      <div class="asset-block-num reveal">02 · ASSET CLASS</div>
+      <h2 class="reveal reveal-delay-1">Pharmaceutical Products</h2>
+      <p class="lead reveal reveal-delay-2">A dual-track pharmaceutical strategy combining bioequivalent generics with 505(b)(2) reformulation programs, leveraging deep regulatory expertise to deliver accessible, differentiated therapies with speed and scientific integrity.</p>
+      <div class="pathway-tags reveal reveal-delay-3">
+        <span class="pathway-tag accent">Generics · ANDA</span>
+        <span class="pathway-tag accent">505(b)(2) · NDA</span>
+        <span class="pathway-tag">Sterile Injectables</span>
+      </div>
+      <div class="subclass-wrap reveal reveal-delay-3">
+        <div class="subclass">
+          <div class="subclass-label">Sub-class A</div>
+          <div class="subclass-title">Generics</div>
+          <p class="subclass-text"><strong>Bioequivalence established across the portfolio.</strong> Multiple generic products, sterile injectables, topical solutions, cutaneous lacquers, and oral syrups, are manufactured through our European partner network and ready for <strong>ANDA filings</strong> in target markets.</p>
+        </div>
+        <div class="subclass accent">
+          <div class="subclass-label">Sub-class B</div>
+          <div class="subclass-title">505(b)(2), MT-01</div>
+          <p class="subclass-text">Our lead 505(b)(2) asset <strong>MT-01</strong> is in <strong>stabilization studies</strong> and progressing through <strong>Phase 2 clinical trials</strong>, on track for NDA filing via the 505(b)(2) pathway.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:28px;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color:var(--navy); margin-bottom:14px;">Generics portfolio (bioequivalence complete, ANDAs pending)</div>
+        <div style="overflow-x:auto; border:1px solid var(--border); border-radius:12px;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.82rem;">
+            <thead>
+              <tr style="background:var(--ice); text-align:left;">
+                <th style="padding:12px 16px; font-weight:700; color:var(--navy);">Molecule</th>
+                <th style="padding:12px 16px; font-weight:700; color:var(--navy);">Dosage form</th>
+              </tr>
+            </thead>
+            <tbody style="color:var(--slate-dark);">
+              <tr style="border-top:1px solid var(--border-soft);"><td style="padding:11px 16px;">Atropine sulfate</td><td style="padding:11px 16px;">Solution for injection</td></tr>
+              <tr style="border-top:1px solid var(--border-soft); background:var(--paper);"><td style="padding:11px 16px;">Ciclopirox</td><td style="padding:11px 16px;">Medicated nail lacquer</td></tr>
+              <tr style="border-top:1px solid var(--border-soft);"><td style="padding:11px 16px;">Minoxidil</td><td style="padding:11px 16px;">Cutaneous solution</td></tr>
+              <tr style="border-top:1px solid var(--border-soft); background:var(--paper);"><td style="padding:11px 16px;">Midazolam</td><td style="padding:11px 16px;">Solution for injection</td></tr>
+              <tr style="border-top:1px solid var(--border-soft);"><td style="padding:11px 16px;">Mometasone furoate</td><td style="padding:11px 16px;">Cutaneous solution</td></tr>
+              <tr style="border-top:1px solid var(--border-soft); background:var(--paper);"><td style="padding:11px 16px;">Morphine hydrochloride</td><td style="padding:11px 16px;">Solution for injection</td></tr>
+              <tr style="border-top:1px solid var(--border-soft);"><td style="padding:11px 16px;">Ondansetron HCl dihydrate</td><td style="padding:11px 16px;">Solution for injection</td></tr>
+              <tr style="border-top:1px solid var(--border-soft); background:var(--paper);"><td style="padding:11px 16px;">Procaine hydrochloride</td><td style="padding:11px 16px;">Solution for injection</td></tr>
+              <tr style="border-top:1px solid var(--border-soft);"><td style="padding:11px 16px;">Tioconazole</td><td style="padding:11px 16px;">Cutaneous nail lacquer</td></tr>
+              <tr style="border-top:1px solid var(--border-soft); background:var(--paper);"><td style="padding:11px 16px;">Water for injections</td><td style="padding:11px 16px;">Solvent / diluent</td></tr>
+              <tr style="border-top:1px solid var(--border-soft);"><td style="padding:11px 16px;">Sodium chloride</td><td style="padding:11px 16px;">Solvent / diluent</td></tr>
+              <tr style="border-top:1px solid var(--border-soft); background:var(--paper);"><td style="padding:11px 16px;">Dextromethorphan HCl + Phenylephrine HCl</td><td style="padding:11px 16px;">Oral solution (syrup)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <a href="contact.html" class="btn btn-outline" style="margin-top:28px;">Explore pharma partnership</a>
+    </div>
+    <div class="asset-block-media reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=900&q=80" alt="Sterile injectable development">
+      <div class="media-badge">
+        <div class="media-badge-tag">Lead Program</div>
+        <div class="media-badge-text">MT-01, topical combination reformulation on the 505(b)(2) pathway.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 CONSULTING -->
+<section class="asset-block" id="consulting" data-screen-label="Asset Classes / Consulting">
+  <div class="asset-block-inner">
+    <div>
+      <div class="asset-block-num reveal">03 · ASSET CLASS</div>
+      <h2 class="reveal reveal-delay-1">Consulting Services</h2>
+      <p class="lead reveal reveal-delay-2">Strategic life science consulting grounded in regulatory intelligence, market access strategy, and commercial operations. We guide emerging and established companies through the complexities of the healthcare landscape.</p>
+      <ul class="asset-detail-list reveal reveal-delay-3">
+        <li><span><strong>Regulatory strategy</strong>, FDA engagement, pathway selection, submission planning, and response management.</span></li>
+        <li><span><strong>Market access</strong>, payer strategy, pricing frameworks, and commercialization roadmaps.</span></li>
+        <li><span><strong>Technical due diligence</strong>, clinical, regulatory, and commercial diligence for investors and acquirers.</span></li>
+      </ul>
+      <div class="pathway-tags reveal reveal-delay-3">
+        <span class="pathway-tag">Regulatory</span>
+        <span class="pathway-tag">Market Access</span>
+        <span class="pathway-tag">Diligence</span>
+      </div>
+      <a href="contact.html" class="btn btn-outline">Request a consulting engagement</a>
+    </div>
+    <div class="asset-block-media reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&q=80" alt="Strategic consulting">
+      <div class="media-badge">
+        <div class="media-badge-tag">Focus</div>
+        <div class="media-badge-text">Regulatory, market access, and diligence support for life science operators and investors.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 INVESTMENTS & CDMO -->
+<section class="asset-block reverse" id="cdmo" data-screen-label="Asset Classes / Investments & CDMO">
+  <div class="asset-block-inner">
+    <div>
+      <div class="asset-block-num reveal">04 · ASSET CLASS</div>
+      <h2 class="reveal reveal-delay-1">Investments & CDMO Services</h2>
+      <p class="lead reveal reveal-delay-2">A capital-deployment and manufacturing partnership model built for the modern biotech ecosystem. We invest in high-conviction life science opportunities and provide contract development and manufacturing services that accelerate client programs.</p>
+      <ul class="asset-detail-list reveal reveal-delay-3">
+        <li><span><strong>Life science capital</strong>, early-stage equity and strategic co-investment alongside operational support.</span></li>
+        <li><span><strong>CDMO services</strong>, formulation development, analytical support, and contract manufacturing through our European partner network.</span></li>
+        <li><span><strong>Co-development</strong>, risk-shared programs that align capital, science, and commercial execution.</span></li>
+      </ul>
+      <div class="pathway-tags reveal reveal-delay-3">
+        <span class="pathway-tag">CDMO</span>
+        <span class="pathway-tag">Capital</span>
+        <span class="pathway-tag">Co-development</span>
+      </div>
+      <a href="contact.html" class="btn btn-outline">Explore capital or CDMO</a>
+    </div>
+    <div class="asset-block-media reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=900&q=80" alt="Pharmaceutical manufacturing">
+      <div class="media-badge">
+        <div class="media-badge-tag">Network</div>
+        <div class="media-badge-text">European CDMO partners supporting sterile, solid-dose, and topical manufacturing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE TABLE -->
+<section class="pipeline-section" id="pipeline" data-screen-label="Asset Classes / Pipeline">
+  <div class="container pipeline-container">
+    <div class="eyebrow reveal">Pipeline</div>
+    <h2 class="section-title reveal reveal-delay-1">Programs in development</h2>
+    <p class="section-lead reveal reveal-delay-2">A snapshot of our active programs across pharmaceutical and device asset classes. Details on select programs are available under NDA to qualified partners and investors.</p>
+
+    <div class="pipeline-table-wrap reveal reveal-delay-2">
+      <div class="pipeline-row pipeline-header">
+        <div>Program</div>
+        <div>Asset Class</div>
+        <div>Pathway</div>
+        <div>Stage</div>
+      </div>
+
+      <!-- MT-01 -->
+      <div class="pipeline-row">
+        <div>
+          <div class="program-code">MT-01</div>
+          <div class="program-category">Combination reformulation</div>
+        </div>
+        <div>
+          <div class="asset-class-cell"><div class="asset-class-dot dot-505"></div>Pharma, 505(b)(2)</div>
+        </div>
+        <div><span class="pathway-chip">NDA, 505(b)(2)</span></div>
+        <div>
+          <div class="stage-track">
+            <div class="stage-pill done"></div>
+            <div class="stage-pill done"></div>
+            <div class="stage-pill done"></div>
+            <div class="stage-pill active"></div>
+            <div class="stage-pill"></div>
+          </div>
+          <div class="stage-labels">
+            <span>Discovery</span><span>Preclinical</span><span>Stabilization</span><span class="current">Phase 2</span><span>NDA Submission</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generics portfolio -->
+      <div class="pipeline-row">
+        <div>
+          <div class="program-code">MT-G Portfolio</div>
+          <div class="program-category">11+ generic products (inj., topical, oral)</div>
+        </div>
+        <div>
+          <div class="asset-class-cell"><div class="asset-class-dot dot-generic"></div>Pharma, Generics</div>
+        </div>
+        <div><span class="pathway-chip">ANDA</span></div>
+        <div>
+          <div class="stage-track">
+            <div class="stage-pill done"></div>
+            <div class="stage-pill done"></div>
+            <div class="stage-pill done"></div>
+            <div class="stage-pill active"></div>
+            <div class="stage-pill"></div>
+          </div>
+          <div class="stage-labels">
+            <span>Formulation</span><span>Bioequivalence</span><span>Scale-up</span><span class="current">ANDA prep</span><span>Submission</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Device program -->
+      <div class="pipeline-row">
+        <div>
+          <div class="program-code">MT-D1</div>
+          <div class="program-category">Lead medical device, commercialization</div>
+        </div>
+        <div>
+          <div class="asset-class-cell"><div class="asset-class-dot dot-device"></div>Medical Device</div>
+        </div>
+        <div><span class="pathway-chip">510(k) Cleared</span></div>
+        <div>
+          <div class="stage-track">
+            <div class="stage-pill done"></div>
+            <div class="stage-pill done"></div>
+            <div class="stage-pill done"></div>
+            <div class="stage-pill done"></div>
+            <div class="stage-pill active"></div>
+          </div>
+          <div class="stage-labels">
+            <span>Concept</span><span>Engineering</span><span>Verification</span><span>510(k)</span><span class="current">Commercial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 24px; font-size: 0.8rem; color: rgba(255,255,255,0.45); font-style: italic;">Program names are internal designations. Product and indication-specific details are shared under confidentiality with qualified counterparties.</p>
+  </div>
+</section>
+
+<!-- REGULATORY REFERENCE -->
+<section class="reg-section" data-screen-label="Asset Classes / Regulatory">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Regulatory Pathways</div>
+      <h2 class="section-title reveal reveal-delay-1">Literate across every pathway we touch</h2>
+      <p class="section-lead reveal reveal-delay-2">Our platform is built to navigate the full range of FDA regulatory pathways relevant to our asset classes, without compromise on scientific or procedural rigor.</p>
+    </div>
+    <div class="reg-grid reveal">
+      <div class="reg-card">
+        <div class="reg-type">Device</div>
+        <div class="reg-name">510(k)</div>
+        <p class="reg-desc">Premarket notification pathway for Class II devices substantially equivalent to a legally marketed predicate.</p>
+      </div>
+      <div class="reg-card">
+        <div class="reg-type">Device</div>
+        <div class="reg-name">PMA</div>
+        <p class="reg-desc">Premarket approval for Class III devices, requiring clinical evidence of safety and effectiveness.</p>
+      </div>
+      <div class="reg-card">
+        <div class="reg-type">Pharma · Generic</div>
+        <div class="reg-name">ANDA</div>
+        <p class="reg-desc">Abbreviated new drug application for bioequivalent generic therapies referencing an approved innovator product.</p>
+      </div>
+      <div class="reg-card">
+        <div class="reg-type">Pharma · NDA</div>
+        <div class="reg-name">505(b)(2)</div>
+        <p class="reg-desc">Hybrid NDA pathway leveraging existing safety data for reformulated, repurposed, or combination drug products.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-header" style="padding: 90px 5%; background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, var(--sky) 100%); color: white;" data-screen-label="Asset Classes / CTA">
+  <div class="container" style="text-align: center;">
+    <h2 style="color: white; font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin-bottom: 16px;">Want deeper details on a specific program?</h2>
+    <p style="color: rgba(255,255,255,0.8); font-size: 1.05rem; max-width: 620px; margin: 0 auto 28px; font-weight: 300;">Qualified partners and investors can request a confidential briefing on any asset class or program.</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-white">Request a Briefing</a>
+      <a href="about.html" class="btn btn-ghost">Meet the Team</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="site-footer"></footer>
+<div id="site-tweaks"></div>
+
+<script src="assets/chrome.js"></script>
+<script src="assets/shared.js"></script>
+<script>MelitrixChrome.mount('assets');</script>
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melitrix, About & Leadership</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css?v=2">
+<style>
+  /* ── STORY ── */
+  .story-section { background: white; padding: 100px 5%; }
+  .story-inner {
+    max-width: 1240px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 90px; align-items: center;
+  }
+  .story-text p {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--slate);
+    font-weight: 300;
+    margin-bottom: 20px;
+    text-wrap: pretty;
+  }
+  .story-text p strong { color: var(--navy); font-weight: 600; }
+  .story-image {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    box-shadow: var(--shadow-lg);
+  }
+  .story-image img { width: 100%; height: 100%; object-fit: cover; }
+  .story-image::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(180deg, transparent, rgba(10,37,64,0.7));
+  }
+  .story-image-quote {
+    position: absolute;
+    bottom: 28px; left: 28px; right: 28px;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.5;
+    z-index: 2;
+    border-left: 2px solid var(--sky-light);
+    padding-left: 16px;
+  }
+
+  /* ── VALUES ── */
+  .values-section { background: var(--ice); padding: 100px 5%; }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 56px;
+  }
+  .value-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 28px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .value-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--sky);
+    box-shadow: var(--shadow-md);
+  }
+  .value-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--sky);
+    margin-bottom: 12px;
+  }
+  .value-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .value-text {
+    font-size: 0.86rem;
+    line-height: 1.65;
+    color: var(--slate);
+    font-weight: 300;
+  }
+
+  /* ── FOUNDER CARD ── */
+  .founder-card {
+    margin-top: 56px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    position: relative;
+  }
+  .founder-inner {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 0;
+    align-items: stretch;
+  }
+  .founder-portrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background: linear-gradient(160deg, #f4f7fb 0%, #e6ecf3 100%);
+    overflow: hidden;
+    align-self: start;
+  }
+  .founder-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .founder-portrait-meta {
+    position: absolute;
+    top: 28px;
+    left: 28px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: white;
+    background: rgba(10, 37, 64, 0.82);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 8px 14px;
+    border-radius: 100px;
+    z-index: 2;
+    white-space: nowrap;
+  }
+  .founder-body {
+    padding: 56px 60px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .founder-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .founder-role {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--sky);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .founder-lede {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--slate);
+    font-weight: 300;
+    margin-bottom: 18px;
+    text-wrap: pretty;
+    max-width: 620px;
+  }
+  .founder-lede strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .founder-quote {
+    margin: 14px 0 0;
+    padding: 22px 26px;
+    border-left: 3px solid var(--sky);
+    background: var(--paper);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--navy);
+    max-width: 620px;
+    border-radius: 0 10px 10px 0;
+    text-wrap: pretty;
+  }
+  @media (max-width: 900px) {
+    .founder-inner { grid-template-columns: 1fr; }
+    .founder-portrait { min-height: 460px; aspect-ratio: 4 / 5; }
+    .founder-body { padding: 40px 30px; }
+    .founder-name { font-size: 1.8rem; }
+  }
+
+  /* ── LEADERSHIP ── */
+  .leader-section { background: white; padding: 100px 5%; }
+  .leader-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .leader-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .leader-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .leader-photo {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, var(--sky) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .leader-photo img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .leader-photo.placeholder {
+    display: flex; align-items: center; justify-content: center;
+  }
+  .leader-photo.placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .leader-initials {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    position: relative;
+    z-index: 2;
+  }
+  .leader-body { padding: 26px 28px; flex: 1; display: flex; flex-direction: column; }
+  .leader-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .leader-role {
+    font-size: 0.85rem;
+    color: var(--sky);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 14px;
+  }
+  .leader-bio {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--slate);
+    font-weight: 300;
+    margin-bottom: 18px;
+    flex: 1;
+  }
+  .leader-creds {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .cred-pill {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: var(--ice);
+    color: var(--blue);
+    border: 1px solid var(--border);
+  }
+
+  /* ── PARTNERS ── */
+  .partner-section { background: var(--navy); color: white; padding: 100px 5%; position: relative; overflow: hidden; }
+  .partner-section::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .partner-section > .container { position: relative; z-index: 2; }
+  .partner-section .eyebrow { color: var(--sky-light); }
+  .partner-section .eyebrow::before { background: var(--sky-light); }
+  .partner-section .section-title { color: white; }
+  .partner-section .section-lead { color: rgba(255,255,255,0.7); }
+  .partner-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 52px;
+  }
+  .partner-entry {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 34px 32px;
+    transition: background 0.2s, border-color 0.2s;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .partner-entry:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(0,155,222,0.4);
+  }
+  .partner-role-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sky-light);
+  }
+  .partner-company {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1.25;
+  }
+  .partner-geo {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    font-weight: 400;
+  }
+  .partner-desc {
+    font-size: 0.86rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+    margin-top: 6px;
+  }
+  .partner-link {
+    margin-top: auto;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--sky-light);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+  .partner-link::after { content: ' →'; }
+  .partner-link:hover { color: white; }
+
+  /* ── TIMELINE ── */
+  .timeline-section { background: var(--paper); padding: 100px 5%; }
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 14px; left: 6%; right: 6%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--sky) 0%, var(--border) 100%);
+  }
+  .milestone {
+    position: relative;
+    padding-top: 40px;
+  }
+  .milestone::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 0;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 0 4px white, 0 0 0 5px var(--blue);
+  }
+  .milestone.future::before {
+    background: white;
+    box-shadow: 0 0 0 4px white, 0 0 0 5px var(--border);
+  }
+  .milestone-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--sky);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+  .milestone-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .milestone-text {
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: var(--slate);
+    font-weight: 300;
+  }
+
+  @media (max-width: 900px) {
+    .story-inner { grid-template-columns: 1fr; gap: 40px; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .leader-grid, .partner-cards { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .timeline::before { display: none; }
+  }
+  @media (max-width: 600px) {
+    .values-grid { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<header class="page-header" data-screen-label="About / Header">
+  <div class="container">
+    <div class="crumb reveal">
+      <a href="index.html">Home</a>
+      <span class="crumb-sep">/</span>
+      <span>About</span>
+    </div>
+    <div class="eyebrow reveal">About Melitrix</div>
+    <h1 class="reveal reveal-delay-1">An integrated life science platform, by operators, for patients.</h1>
+    <p class="page-sub reveal reveal-delay-2">We believe the next generation of healthcare impact will come from companies that can design, develop, manufacture, and commercialize across the full value chain. That conviction is what Melitrix was built to deliver.</p>
+  </div>
+</header>
+
+<!-- STORY -->
+<section class="story-section" id="story" data-screen-label="About / Story">
+  <div class="story-inner">
+    <div class="story-text">
+      <div class="eyebrow reveal">Our Story</div>
+      <h2 class="section-title reveal reveal-delay-1" style="margin-bottom: 24px;">From a conviction to a platform.</h2>
+      <p class="reveal reveal-delay-2">Melitrix was founded on a single conviction, that <strong>integrated life science platforms can address problems no single-asset company can solve alone</strong>. The barriers to bringing medicine and medical technology to patients are no longer purely scientific; they are regulatory, commercial, and operational in equal measure.</p>
+      <p class="reveal reveal-delay-2">We structured the company around four asset classes on purpose. Devices inform formulation. Formulation informs manufacturing. Manufacturing informs capital deployment. Capital deployment informs the next program we pursue. Each discipline sharpens the others.</p>
+      <p class="reveal reveal-delay-3">Melitrix is executing a high-impact portfolio strategy, led by our lead 505(b)(2) candidate <strong>MT-01</strong>, and a robust pipeline of sterile injectable generics. With a diagnostic device program already in the commercial stage, our operations are fortified by a global-from-day-one platform. This is supported by our extensive network of European CDMOs, EMEA marketing partners, and our sophisticated R&amp;D and regulatory infrastructure.</p>
+    </div>
+    <div class="story-image reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?w=900&q=80" alt="Scientific research">
+      <div class="story-image-quote">"We build at the intersection of scientific rigor and commercial intelligence."</div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section" id="values" data-screen-label="About / Values">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Operating Principles</div>
+      <h2 class="section-title reveal reveal-delay-1">Values we won't compromise</h2>
+      <p class="section-lead reveal reveal-delay-2">Four operating principles that guide every program, every partnership, and every capital decision at Melitrix.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-num">01</div>
+        <div class="value-title">Patient First</div>
+        <p class="value-text">Every program must demonstrate a credible path to improved patient outcomes. Commercial opportunity without clinical benefit is not a program we advance.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-num">02</div>
+        <div class="value-title">Trust</div>
+        <p class="value-text">Quality, transparency, and accountability are non-negotiable. We earn trust by holding ourselves to the standards our partners, regulators, and patients expect.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-num">03</div>
+        <div class="value-title">Integrated Thinking</div>
+        <p class="value-text">We use the full platform on every decision. The right answer is rarely found in a single discipline.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-3">
+        <div class="value-num">04</div>
+        <div class="value-title">Relationships</div>
+        <p class="value-text">We build with partners and people who share our standards. Long, candid relationships compound into better science and better outcomes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partner-section" id="partners" data-screen-label="About / Partners">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Strategic Ecosystem</div>
+      <h2 class="section-title reveal reveal-delay-1">A global partner network,<br>built for execution.</h2>
+      <p class="section-lead reveal reveal-delay-2">Melitrix operates a curated network of CDMO, commercial, and R&amp;D partners across Europe, India, and EMEA, selected for technical capability and alignment with our quality standards.</p>
+    </div>
+    <div class="partner-cards">
+
+      <div class="partner-entry reveal">
+        <div class="partner-role-tag">CDMO &middot; Europe</div>
+        <div class="partner-company">European CDMO Partner</div>
+        <div class="partner-geo">Iberian peninsula</div>
+        <p class="partner-desc">Contract development and manufacturing across solid, liquid, and semi-solid pharmaceutical forms, EU-GMP certified, supporting our European supply.</p>
+      </div>
+
+      <div class="partner-entry reveal reveal-delay-1">
+        <div class="partner-role-tag">Commercial &middot; EMEA</div>
+        <div class="partner-company">EMEA Commercial Partner</div>
+        <div class="partner-geo">Pan-EMEA distribution</div>
+        <p class="partner-desc">Distribution, brand, and market-access capability across the EMEA region for launched and pipeline products.</p>
+      </div>
+
+      <div class="partner-entry reveal reveal-delay-2">
+        <div class="partner-role-tag">R&amp;D &middot; India</div>
+        <div class="partner-company">R&amp;D Support Partner</div>
+        <div class="partner-geo">Research &amp; formulation center</div>
+        <p class="partner-desc">Formulation development, analytical method development, and pre-formulation services across the Melitrix pipeline.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section" data-screen-label="About / Timeline">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Trajectory</div>
+      <h2 class="section-title reveal reveal-delay-1">A disciplined path forward</h2>
+      <p class="section-lead reveal reveal-delay-2">Key milestones marking the evolution of Melitrix from founding conviction to integrated platform.</p>
+    </div>
+    <div class="timeline">
+      <div class="milestone reveal">
+        <div class="milestone-date">2026</div>
+        <div class="milestone-title">Founding</div>
+        <p class="milestone-text">Melitrix incorporated with an integrated four asset-class thesis and founding capital commitments.</p>
+      </div>
+      <div class="milestone reveal reveal-delay-1">
+        <div class="milestone-date">2026</div>
+        <div class="milestone-title">Partner Network</div>
+        <p class="milestone-text">European CDMO, EMEA marketing, and Indian R&amp;D partnerships established across the platform.</p>
+      </div>
+      <div class="milestone reveal reveal-delay-2">
+        <div class="milestone-date">2027</div>
+        <div class="milestone-title">MT-01 into CMC</div>
+        <p class="milestone-text">Lead 505(b)(2) program MT-01 advances into formulation and CMC development; generic sterile pipeline activated.</p>
+      </div>
+      <div class="milestone future reveal reveal-delay-3">
+        <div class="milestone-date">2027 →</div>
+        <div class="milestone-title">Clinical &amp; Filings</div>
+        <p class="milestone-text">Planned clinical milestones for MT-01, initial ANDA submissions, and first device 510(k) activities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="site-footer"></footer>
+<div id="site-tweaks"></div>
+
+<script src="assets/chrome.js"></script>
+<script src="assets/shared.js"></script>
+<script>MelitrixChrome.mount('about');</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Melitrix">
+  
+  <path d="M 25 40 L 25 168 L 50 168 L 50 108 L 95 150 L 100 105 Z" fill="#1e3a5f"></path>
+  <path d="M 175 40 L 175 168 L 150 168 L 150 108 L 105 150 L 100 105 Z" fill="#1e3a5f"></path>
+  
+  <path d="M 35 168 L 35 32 L 100 105 L 165 32 L 165 168 L 140 168 L 140 88 L 100 134 L 60 88 L 60 168 Z" fill="#0a2540"></path>
+  
+  <rect x="98" y="30" width="4" height="140" rx="2" fill="#0a2540"></rect>
+  
+  <circle cx="100" cy="22" r="4" fill="#0a2540"></circle>
+</svg>

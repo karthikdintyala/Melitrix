@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melitrix, Integrated Life Science Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css?v=3">
+<style>
+  /* ─────────────────────────────
+     PLAIN LANDING — Hero only
+     ───────────────────────────── */
+  .home-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 140px 5% 120px;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(165deg, #f5faff 0%, #ffffff 55%, #eaf3fb 100%);
+  }
+  .home-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,87,184,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,87,184,0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 80% 70% at 30% 50%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 30% 50%, black 30%, transparent 75%);
+  }
+  .home-hero::after {
+    content: '';
+    position: absolute;
+    right: -240px; top: 50%;
+    transform: translateY(-50%);
+    width: 760px; height: 760px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,155,222,0.12);
+    pointer-events: none;
+  }
+  .home-hero-inner {
+    position: relative; z-index: 2;
+    max-width: 980px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+  }
+  .home-hero h1 {
+    font-size: clamp(2.6rem, 5.4vw, 4.6rem);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 28px;
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .home-hero h1 em {
+    font-style: italic;
+    color: var(--blue);
+  }
+  .home-hero-sub {
+    font-size: clamp(1rem, 1.4vw, 1.18rem);
+    line-height: 1.7;
+    color: var(--slate);
+    margin: 0 auto 44px;
+    font-weight: 300;
+    max-width: 680px;
+    text-wrap: pretty;
+  }
+  .home-hero-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Subtle credentials strip */
+  .home-creds {
+    margin-top: 96px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border-soft);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 36px 56px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .home-cred {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--light-slate);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .home-cred-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sky);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 700px) {
+    .home-hero { padding: 110px 5% 90px; }
+    .home-creds { gap: 16px 24px; margin-top: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<!-- HERO, plain landing -->
+<section class="home-hero" data-screen-label="Home">
+  <div class="home-hero-inner">
+    <div class="eyebrow reveal" style="justify-content:center;">Integrated Life Science Platform</div>
+    <h1 class="reveal reveal-delay-1">Where <em>breakthroughs</em> become better medicine.</h1>
+    <p class="home-hero-sub reveal reveal-delay-2">Melitrix is an integrated life science company advancing medical devices, pharmaceuticals, consulting, and CDMO investments, with the rigor and patience required to move science from laboratory to patient.</p>
+    <div class="home-hero-actions reveal reveal-delay-3">
+      <a href="asset-classes.html" class="btn btn-primary">Explore the Platform</a>
+      <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+    </div>
+
+    <div class="home-creds reveal reveal-delay-3">
+      <div class="home-cred"><span class="home-cred-dot"></span>Medical Devices</div>
+      <div class="home-cred"><span class="home-cred-dot"></span>Pharmaceuticals</div>
+      <div class="home-cred"><span class="home-cred-dot"></span>Consulting</div>
+      <div class="home-cred"><span class="home-cred-dot"></span>CDMO &amp; Investments</div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="site-footer"></footer>
+<div id="site-tweaks"></div>
+
+<script src="assets/chrome.js"></script>
+<script src="assets/shared.js"></script>
+<script>
+  MelitrixChrome.mount('home');
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.home-hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), 200 + i * 120);
+    });
+  });
+</script>
+</body>
+</html>
