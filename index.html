@@ -3,18 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Melitrix, Integrated Life Science Platform</title>
+<title>Melitrix, Specialty Pharmaceutical Company &amp; Development Partner</title>
+<meta name="description" content="Melitrix is a specialty pharmaceutical company and development partner, building an innovation and generic portfolio and helping companies develop, manufacture, and launch products across new markets.">
+<link rel="canonical" href="https://melitrix.net/">
+<link rel="icon" type="image/png" href="assets/melitrix-mark.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0a2540">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Melitrix">
+<meta property="og:title" content="Melitrix, Specialty Pharmaceutical Company &amp; Development Partner">
+<meta property="og:description" content="Building an innovation and generic portfolio, and helping companies develop, manufacture, and launch products across new markets.">
+<meta property="og:url" content="https://melitrix.net/">
+<meta property="og:image" content="https://melitrix.net/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/shared.css?v=3">
+<link rel="stylesheet" href="assets/shared.css?v=4">
 <style>
-  /* ─────────────────────────────
-     PLAIN LANDING — Hero only
-     ───────────────────────────── */
+  /* ─── HERO ─── */
   .home-hero {
     position: relative;
     overflow: hidden;
-    padding: 140px 5% 120px;
-    min-height: 90vh;
+    padding: 128px 5% 104px;
     display: flex;
     align-items: center;
     background: linear-gradient(165deg, #f5faff 0%, #ffffff 55%, #eaf3fb 100%);
@@ -42,62 +51,54 @@
   }
   .home-hero-inner {
     position: relative; z-index: 2;
-    max-width: 980px;
+    max-width: 960px;
     margin: 0 auto;
     width: 100%;
     text-align: center;
   }
   .home-hero h1 {
-    font-size: clamp(2.6rem, 5.4vw, 4.6rem);
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
     font-weight: 700;
     color: var(--navy);
-    margin-bottom: 28px;
+    margin-bottom: 26px;
     text-wrap: balance;
     letter-spacing: -0.02em;
-    line-height: 1.05;
+    line-height: 1.07;
   }
-  .home-hero h1 em {
-    font-style: italic;
-    color: var(--blue);
-  }
+  .home-hero h1 em { font-style: italic; color: var(--blue); }
   .home-hero-sub {
-    font-size: clamp(1rem, 1.4vw, 1.18rem);
+    font-size: clamp(1.02rem, 1.4vw, 1.2rem);
     line-height: 1.7;
     color: var(--slate);
-    margin: 0 auto 44px;
+    margin: 0 auto 40px;
     font-weight: 300;
-    max-width: 680px;
+    max-width: 660px;
     text-wrap: pretty;
   }
   .home-hero-actions {
-    display: flex;
-    gap: 14px;
+    display: flex; gap: 14px;
     justify-content: center;
     flex-wrap: wrap;
   }
-
-  /* Subtle credentials strip */
   .home-creds {
-    margin-top: 96px;
-    padding-top: 36px;
+    margin-top: 84px;
+    padding-top: 34px;
     border-top: 1px solid var(--border-soft);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 36px 56px;
-    max-width: 720px;
+    gap: 20px 48px;
+    max-width: 760px;
     margin-left: auto;
     margin-right: auto;
   }
   .home-cred {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 600;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
     color: var(--light-slate);
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    display: flex; align-items: center; gap: 10px;
   }
   .home-cred-dot {
     width: 6px; height: 6px;
@@ -106,9 +107,171 @@
     flex-shrink: 0;
   }
 
+  /* ─── SECTION HEAD (centered) ─── */
+  .home-sec-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+  .home-sec-head .eyebrow { justify-content: center; }
+  .home-sec-head .section-lead { margin-left: auto; margin-right: auto; }
+
+  /* ─── PILLARS ─── */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .pillar {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 32px;
+    display: flex; flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .pillar:hover {
+    transform: translateY(-4px);
+    border-color: var(--sky);
+    box-shadow: var(--shadow-md);
+  }
+  .pillar-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--sky);
+    margin-bottom: 16px;
+  }
+  .pillar h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .pillar p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--slate);
+    font-weight: 300;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  .pillar-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .pillar-link::after { content: ' →'; }
+  .pillar-link:hover { color: var(--navy); }
+
+  /* ─── METRICS BAND ─── */
+  .metrics {
+    background: var(--navy);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .metrics::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .metrics .container { position: relative; z-index: 2; }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .metric { text-align: left; }
+  .metric-value {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.4vw, 2.9rem);
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .metric-label {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.62);
+    font-weight: 300;
+  }
+  .metrics-note {
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.45);
+    font-style: italic;
+  }
+
+  /* ─── WHY ─── */
+  .why-inner {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .why-list { display: flex; flex-direction: column; gap: 4px; }
+  .why-item {
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+  }
+  .why-item:last-child { border-bottom: 1px solid var(--border); }
+  .why-item h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .why-item p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--slate);
+    font-weight: 300;
+  }
+
+  /* ─── CTA BAND ─── */
+  .home-cta {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, var(--sky) 100%);
+    color: white;
+    text-align: center;
+  }
+  .home-cta h2 {
+    color: white;
+    font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+    margin-bottom: 14px;
+  }
+  .home-cta p {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto 28px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+  .home-cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .pillars { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+    .why-inner { grid-template-columns: 1fr; gap: 32px; }
+  }
   @media (max-width: 700px) {
-    .home-hero { padding: 110px 5% 90px; }
-    .home-creds { gap: 16px 24px; margin-top: 60px; }
+    .home-hero { padding: 104px 5% 84px; }
+    .home-creds { gap: 14px 22px; margin-top: 56px; }
+  }
+  @media (max-width: 560px) {
+    .metrics-grid { grid-template-columns: 1fr; }
+    .home-hero h1 { font-size: 2.1rem; }
+    .home-hero-inner { min-width: 0; }
+    .home-hero-actions .btn { flex: 1 1 100%; justify-content: center; }
+  }
+  @media (max-width: 400px) {
+    .home-hero h1 { font-size: 1.85rem; }
   }
 </style>
 </head>
@@ -116,21 +279,125 @@
 
 <div id="site-nav"></div>
 
-<!-- HERO, plain landing -->
+<!-- HERO -->
 <section class="home-hero" data-screen-label="Home">
   <div class="home-hero-inner">
-    <div class="eyebrow reveal" style="justify-content:center;">Integrated Life Science Platform</div>
-    <h1 class="reveal reveal-delay-1">Where <em>breakthroughs</em> become better medicine.</h1>
-    <p class="home-hero-sub reveal reveal-delay-2">Melitrix is an integrated life science company advancing pharmaceuticals, consulting, and CDMO investments, with the rigor and patience required to move science from laboratory to patient.</p>
+    <div class="eyebrow reveal" style="justify-content:center;">Specialty Pharmaceuticals</div>
+    <h1 class="reveal reveal-delay-1">Where <em>innovation</em> becomes accessible medicine.</h1>
+    <p class="home-hero-sub reveal reveal-delay-2">Melitrix builds its own portfolio of specialty pharmaceuticals, generics, and consumer health products, and partners with other companies to develop, manufacture, and launch across new markets, backed by an established European and Indian manufacturing and regulatory network.</p>
     <div class="home-hero-actions reveal reveal-delay-3">
       <a href="asset-classes.html" class="btn btn-primary">Explore the Platform</a>
-      <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+      <a href="contact.html" class="btn btn-outline">Start a Conversation</a>
     </div>
 
     <div class="home-creds reveal reveal-delay-3">
-      <div class="home-cred"><span class="home-cred-dot"></span>Pharmaceuticals</div>
-      <div class="home-cred"><span class="home-cred-dot"></span>Consulting</div>
-      <div class="home-cred"><span class="home-cred-dot"></span>CDMO &amp; Investments</div>
+      <div class="home-cred"><span class="home-cred-dot"></span>Specialty Pharmaceuticals</div>
+      <div class="home-cred"><span class="home-cred-dot"></span>Generics</div>
+      <div class="home-cred"><span class="home-cred-dot"></span>Consumer Health</div>
+      <div class="home-cred"><span class="home-cred-dot"></span>Development &amp; CDMO</div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section data-screen-label="Home / What we do">
+  <div class="container">
+    <div class="home-sec-head">
+      <div class="eyebrow reveal">What We Do</div>
+      <h2 class="section-title reveal reveal-delay-1">One platform, built to reinforce itself</h2>
+      <p class="section-lead reveal reveal-delay-2">Our own products fund and inform our development work. Our development work strengthens our manufacturing and regulatory network. Each part makes the others sharper.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="pillar-num">01</div>
+        <h3>Our Portfolio</h3>
+        <p>Specialty pharmaceutical programs on the 505(b)(2) pathway, a generic pipeline of sterile injectables, liquids, and oral solids, and a consumer health range of color cosmetics and nutraceuticals.</p>
+        <a href="asset-classes.html#specialty" class="pillar-link">See the platform</a>
+      </div>
+      <div class="pillar reveal reveal-delay-1">
+        <div class="pillar-num">02</div>
+        <h3>Development &amp; Consulting</h3>
+        <p>Regulatory strategy, formulation development, and market-access support for companies moving a product toward approval, or into a new territory, without building the function in-house.</p>
+        <a href="asset-classes.html#consulting" class="pillar-link">Development services</a>
+      </div>
+      <div class="pillar reveal reveal-delay-2">
+        <div class="pillar-num">03</div>
+        <h3>CDMO &amp; Manufacturing</h3>
+        <p>Access to dedicated European capacity for sterile injectables and liquids, plus a vetted network of manufacturing and distribution partners across Europe, India, and emerging markets.</p>
+        <a href="asset-classes.html#cdmo" class="pillar-link">Manufacturing access</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="metrics" data-screen-label="Home / Portfolio at a glance">
+  <div class="container">
+    <div class="home-sec-head" style="text-align:left; margin:0 0 44px;">
+      <div class="eyebrow reveal" style="color:var(--sky-light);">Portfolio at a Glance</div>
+      <h2 class="section-title reveal reveal-delay-1" style="color:white;">Active on every part of the platform</h2>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric reveal">
+        <div class="metric-value">2</div>
+        <div class="metric-label">Specialty innovation programs in development, led by MT-01</div>
+      </div>
+      <div class="metric reveal reveal-delay-1">
+        <div class="metric-value">Generics</div>
+        <div class="metric-label">Sterile injectable, liquid, and oral-solid pipeline in pre-filing preparation</div>
+      </div>
+      <div class="metric reveal reveal-delay-2">
+        <div class="metric-value">30</div>
+        <div class="metric-label">Consumer health formulations, 20 color cosmetics and 10 nutraceuticals</div>
+      </div>
+      <div class="metric reveal reveal-delay-3">
+        <div class="metric-value">EU + India</div>
+        <div class="metric-label">Manufacturing, R&amp;D, and distribution network across regulated and emerging markets</div>
+      </div>
+    </div>
+    <p class="metrics-note reveal">Program and pipeline details are shared with qualified partners under confidentiality.</p>
+  </div>
+</section>
+
+<!-- WHY -->
+<section data-screen-label="Home / Why Melitrix">
+  <div class="container">
+    <div class="why-inner">
+      <div>
+        <div class="eyebrow reveal">Why Melitrix</div>
+        <h2 class="section-title reveal reveal-delay-1">Built for the long horizon</h2>
+        <p class="section-lead reveal reveal-delay-2">Melitrix is privately held and not raising capital. That lets us choose programs and partners on merit, and stay with them.</p>
+      </div>
+      <div class="why-list">
+        <div class="why-item reveal">
+          <h4>Integrated, not scattered</h4>
+          <p>Development, regulatory, manufacturing, and commercial capability sit under one roof, so a program does not lose momentum handing off between vendors.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-1">
+          <h4>Global from day one</h4>
+          <p>Our manufacturing and R&amp;D partners are established operators in Europe and India, with distribution reach into EMEA and emerging markets.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-2">
+          <h4>Regulatory literacy</h4>
+          <p>We work fluently across ANDA, 505(b)(2), EU-GMP, and consumer health frameworks, and we plan submissions before we start formulation.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-3">
+          <h4>Patient outcome first</h4>
+          <p>Every program has to show a credible path to a better outcome or better access. Commercial opportunity alone is not a reason to advance one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="home-cta" data-screen-label="Home / CTA">
+  <div class="container">
+    <h2 class="reveal">Have a program, a product, or a market in mind?</h2>
+    <p class="reveal reveal-delay-1">Whether you need development support, manufacturing capacity, a licensing conversation, or a distribution partner, we would like to hear about it.</p>
+    <div class="home-cta-actions reveal reveal-delay-2">
+      <a href="contact.html" class="btn btn-white">Start a Conversation</a>
+      <a href="asset-classes.html#pipeline" class="btn btn-ghost">View the Pipeline</a>
     </div>
   </div>
 </section>
