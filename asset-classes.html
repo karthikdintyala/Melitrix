@@ -235,7 +235,6 @@
     width: 8px; height: 8px; border-radius: 50%;
     flex-shrink: 0;
   }
-  .dot-device { background: #8cd5ff; }
   .dot-generic { background: #b891ff; }
   .dot-505 { background: var(--gold); }
   .pathway-chip {
@@ -289,7 +288,7 @@
   .reg-section { background: white; }
   .reg-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2px;
     background: var(--border);
     border: 1px solid var(--border);
@@ -351,45 +350,16 @@
       <span>Asset Classes</span>
     </div>
     <div class="eyebrow reveal">Platform</div>
-    <h1 class="reveal reveal-delay-1">Four asset classes, one unified thesis.</h1>
-    <p class="page-sub reveal reveal-delay-2">Melitrix operates an integrated platform spanning medical devices, pharmaceutical products, consulting services, and manufacturing investments, structured so each capability reinforces the others.</p>
+    <h1 class="reveal reveal-delay-1">Three asset classes, one unified thesis.</h1>
+    <p class="page-sub reveal reveal-delay-2">Melitrix operates an integrated platform spanning pharmaceutical products, consulting services, and manufacturing investments, structured so each capability reinforces the others.</p>
   </div>
 </header>
 
-<!-- 01 MEDICAL DEVICES -->
-<section class="asset-block" id="medical-devices" data-screen-label="Asset Classes / Medical Devices">
+<!-- 01 PHARMACEUTICAL PRODUCTS -->
+<section class="asset-block" id="pharmaceuticals" data-screen-label="Asset Classes / Pharmaceuticals">
   <div class="asset-block-inner">
     <div>
       <div class="asset-block-num reveal">01 · ASSET CLASS</div>
-      <h2 class="reveal reveal-delay-1">Medical Devices</h2>
-      <p class="lead reveal reveal-delay-2">Melitrix is a commercial-stage medical technology company specializing in advanced wound care solutions. Our flagship technology is FDA 510(k) cleared and currently available on the market, reflecting our commitment to clinical excellence and patient outcomes.</p>
-      <ul class="asset-detail-list reveal reveal-delay-3">
-        <li><span><strong>1 product, 510(k) cleared</strong>, currently in commercialization, our first marketed medical device asset.</span></li>
-        <li><span><strong>Diagnostic and therapeutic devices</strong>, designed for point-of-care and clinical settings with a focus on workflow integration.</span></li>
-        <li><span><strong>Monitoring and connected-health</strong>, additional programs in evaluation for the platform roadmap.</span></li>
-      </ul>
-      <div class="pathway-tags reveal reveal-delay-3">
-        <span class="pathway-tag">510(k) Cleared</span>
-        <span class="pathway-tag">CE Mark</span>
-        <span class="pathway-tag">ISO 13485</span>
-      </div>
-      <a href="contact.html" class="btn btn-outline">Discuss a device partnership</a>
-    </div>
-    <div class="asset-block-media reveal reveal-delay-1">
-      <img src="https://images.unsplash.com/photo-1580281657527-47f249e8f4df?w=900&q=80" alt="Medical device engineering">
-      <div class="media-badge">
-        <div class="media-badge-tag">Capability</div>
-        <div class="media-badge-text">Class II & III device development across diagnostic, therapeutic, and monitoring domains.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 02 PHARMACEUTICAL PRODUCTS -->
-<section class="asset-block reverse" id="pharmaceuticals" data-screen-label="Asset Classes / Pharmaceuticals">
-  <div class="asset-block-inner">
-    <div>
-      <div class="asset-block-num reveal">02 · ASSET CLASS</div>
       <h2 class="reveal reveal-delay-1">Pharmaceutical Products</h2>
       <p class="lead reveal reveal-delay-2">A dual-track pharmaceutical strategy combining bioequivalent generics with 505(b)(2) reformulation programs, leveraging deep regulatory expertise to deliver accessible, differentiated therapies with speed and scientific integrity.</p>
       <div class="pathway-tags reveal reveal-delay-3">
@@ -426,11 +396,11 @@
   </div>
 </section>
 
-<!-- 03 CONSULTING -->
-<section class="asset-block" id="consulting" data-screen-label="Asset Classes / Consulting">
+<!-- 02 CONSULTING -->
+<section class="asset-block reverse" id="consulting" data-screen-label="Asset Classes / Consulting">
   <div class="asset-block-inner">
     <div>
-      <div class="asset-block-num reveal">03 · ASSET CLASS</div>
+      <div class="asset-block-num reveal">02 · ASSET CLASS</div>
       <h2 class="reveal reveal-delay-1">Consulting Services</h2>
       <p class="lead reveal reveal-delay-2">Strategic life science consulting grounded in regulatory intelligence, market access strategy, and commercial operations. We guide emerging and established companies through the complexities of the healthcare landscape.</p>
       <ul class="asset-detail-list reveal reveal-delay-3">
@@ -455,11 +425,11 @@
   </div>
 </section>
 
-<!-- 04 INVESTMENTS & CDMO -->
-<section class="asset-block reverse" id="cdmo" data-screen-label="Asset Classes / Investments & CDMO">
+<!-- 03 INVESTMENTS & CDMO -->
+<section class="asset-block" id="cdmo" data-screen-label="Asset Classes / Investments & CDMO">
   <div class="asset-block-inner">
     <div>
-      <div class="asset-block-num reveal">04 · ASSET CLASS</div>
+      <div class="asset-block-num reveal">03 · ASSET CLASS</div>
       <h2 class="reveal reveal-delay-1">Investments & CDMO Services</h2>
       <p class="lead reveal reveal-delay-2">A capital-deployment and manufacturing partnership model built for the modern biotech ecosystem. We invest in high-conviction life science opportunities and provide contract development and manufacturing services that accelerate client programs.</p>
       <ul class="asset-detail-list reveal reveal-delay-3">
@@ -489,7 +459,7 @@
   <div class="container pipeline-container">
     <div class="eyebrow reveal">Pipeline</div>
     <h2 class="section-title reveal reveal-delay-1">Programs in development</h2>
-    <p class="section-lead reveal reveal-delay-2">A snapshot of our active programs across pharmaceutical and device asset classes. Details on select programs are available under NDA to qualified partners and investors.</p>
+    <p class="section-lead reveal reveal-delay-2">A snapshot of our active pharmaceutical programs. Details on select programs are available under NDA to qualified partners and investors.</p>
 
     <div class="pipeline-table-wrap reveal reveal-delay-2">
       <div class="pipeline-row pipeline-header">
@@ -547,29 +517,6 @@
         </div>
       </div>
 
-      <!-- Device program -->
-      <div class="pipeline-row">
-        <div>
-          <div class="program-code">MT-D1</div>
-          <div class="program-category">Lead medical device, commercialization</div>
-        </div>
-        <div>
-          <div class="asset-class-cell"><div class="asset-class-dot dot-device"></div>Medical Device</div>
-        </div>
-        <div><span class="pathway-chip">510(k) Cleared</span></div>
-        <div>
-          <div class="stage-track">
-            <div class="stage-pill done"></div>
-            <div class="stage-pill done"></div>
-            <div class="stage-pill done"></div>
-            <div class="stage-pill done"></div>
-            <div class="stage-pill active"></div>
-          </div>
-          <div class="stage-labels">
-            <span>Concept</span><span>Engineering</span><span>Verification</span><span>510(k)</span><span class="current">Commercial</span>
-          </div>
-        </div>
-      </div>
     </div>
 
     <p style="margin-top: 24px; font-size: 0.8rem; color: rgba(255,255,255,0.45); font-style: italic;">Program names are internal designations. Product and indication-specific details are shared under confidentiality with qualified counterparties.</p>
@@ -585,16 +532,6 @@
       <p class="section-lead reveal reveal-delay-2">Our platform is built to navigate the full range of FDA regulatory pathways relevant to our asset classes, without compromise on scientific or procedural rigor.</p>
     </div>
     <div class="reg-grid reveal">
-      <div class="reg-card">
-        <div class="reg-type">Device</div>
-        <div class="reg-name">510(k)</div>
-        <p class="reg-desc">Premarket notification pathway for Class II devices substantially equivalent to a legally marketed predicate.</p>
-      </div>
-      <div class="reg-card">
-        <div class="reg-type">Device</div>
-        <div class="reg-name">PMA</div>
-        <p class="reg-desc">Premarket approval for Class III devices, requiring clinical evidence of safety and effectiveness.</p>
-      </div>
       <div class="reg-card">
         <div class="reg-type">Pharma · Generic</div>
         <div class="reg-name">ANDA</div>
