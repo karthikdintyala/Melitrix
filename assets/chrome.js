@@ -45,13 +45,13 @@
           <div class="mega">
             <div>
               <div class="mega-col-title">Platform</div>
-              <a href="asset-classes.html#medical-devices">
-                Medical Devices
-                <span class="mega-desc">Diagnostic, therapeutic, monitoring</span>
-              </a>
               <a href="asset-classes.html#pharmaceuticals">
                 Pharmaceutical Products
                 <span class="mega-desc">Generics and 505(b)(2) pathways</span>
+              </a>
+              <a href="asset-classes.html#cdmo">
+                Investments & CDMO
+                <span class="mega-desc">Capital deployment + manufacturing</span>
               </a>
             </div>
             <div>
@@ -59,10 +59,6 @@
               <a href="asset-classes.html#consulting">
                 Consulting Services
                 <span class="mega-desc">Regulatory, market access, due diligence</span>
-              </a>
-              <a href="asset-classes.html#cdmo">
-                Investments & CDMO
-                <span class="mega-desc">Capital deployment + manufacturing</span>
               </a>
             </div>
             <div class="mega-feature">
@@ -121,7 +117,7 @@
           <span style="width:44px; height:44px; display:inline-flex;">${MARK_SVG_INVERSE}</span>
           <span class="logo-wordmark" style="margin-bottom:0;">Melitrix</span>
         </a>
-        <p>An integrated life science platform spanning medical devices, pharmaceutical products, consulting services, and CDMO investments, advancing science to deliver meaningful value.</p>
+        <p>An integrated life science platform spanning pharmaceutical products, consulting services, and CDMO investments, advancing science to deliver meaningful value.</p>
         <div class="footer-badge">
           <div class="dot-live"></div>
           Actively Accepting Partners
@@ -130,7 +126,6 @@
       <div>
         <div class="footer-col-title">Asset Classes</div>
         <ul class="footer-links">
-          <li><a href="asset-classes.html#medical-devices">Medical Devices</a></li>
           <li><a href="asset-classes.html#pharmaceuticals">Generics</a></li>
           <li><a href="asset-classes.html#pharmaceuticals">505(b)(2)</a></li>
           <li><a href="asset-classes.html#consulting">Consulting</a></li>
