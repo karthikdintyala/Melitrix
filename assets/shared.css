@@ -44,15 +44,17 @@ body[data-theme="deep-navy"] {
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--white);
   color: var(--slate-dark);
   overflow-x: hidden;
+  max-width: 100%;
   line-height: 1.5;
 }
+img { max-width: 100%; }
 
 /* ── TYPE ── */
 h1, h2, h3, h4 {
@@ -93,17 +95,14 @@ nav.main-nav {
   backdrop-filter: blur(12px);
 }
 .nav-logo {
-  display: flex; align-items: center; gap: 12px;
+  display: flex; align-items: center;
   text-decoration: none;
 }
-.logo-mark {
-  width: 40px; height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+.nav-logo-img {
+  height: 30px;
+  width: auto;
+  display: block;
 }
-.logo-mark svg { width: 100%; height: 100%; display: block; }
 .logo-wordmark {
   font-family: 'Playfair Display', serif;
   font-size: 1.4rem;
@@ -112,6 +111,15 @@ nav.main-nav {
   letter-spacing: -0.01em;
 }
 .logo-wordmark span { color: inherit; }
+.footer-logo { display: inline-block; margin-bottom: 18px; }
+.footer-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+  /* Brand wordmark ships in navy; render it white on the dark footer. */
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
 
 .nav-menu {
   display: flex; gap: 2px; list-style: none;
@@ -239,6 +247,71 @@ nav.main-nav {
 }
 .nav-cta:hover { background: var(--navy); transform: translateY(-1px); }
 
+/* ── Mobile menu toggle (hamburger) ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px; height: 44px;
+  padding: 10px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile menu panel ── */
+.mobile-menu {
+  position: fixed;
+  top: 76px; left: 0; right: 0; bottom: 0;
+  z-index: 99;
+  background: white;
+  overflow-y: auto;
+  border-top: 1px solid var(--border);
+  animation: mobile-menu-in 0.2s ease;
+}
+@keyframes mobile-menu-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mobile-menu-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 6% 48px;
+}
+.mobile-link {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  padding: 16px 0 10px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.mobile-link.active { color: var(--blue); }
+.mobile-sublink {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--slate);
+  text-decoration: none;
+  padding: 11px 0 11px 16px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.mobile-sublink:hover, .mobile-link:hover { color: var(--blue); }
+.mobile-cta { margin-top: 28px; justify-content: center; }
+body.menu-open { overflow: hidden; }
+
 /* ══════════════════════════════════════════════
    SHARED PAGE PRIMITIVES
    ══════════════════════════════════════════════ */
@@ -253,11 +326,17 @@ section { padding: 100px 5%; }
   color: var(--sky);
   margin-bottom: 14px;
   display: inline-flex; align-items: center; gap: 10px;
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 .eyebrow::before {
   content: ''; display: block;
   width: 30px; height: 2px;
   background: var(--sky);
+  flex-shrink: 0;
+}
+@media (max-width: 560px) {
+  .eyebrow { letter-spacing: 0.12em; font-size: 0.68rem; }
 }
 
 .section-title {
@@ -445,7 +524,11 @@ footer.site-footer {
 @media (max-width: 1024px) {
   .nav-menu { display: none; }
   .top-utility { display: none; }
+  .nav-toggle { display: flex; }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (min-width: 1025px) {
+  .mobile-menu { display: none !important; }
 }
 @media (max-width: 640px) {
   section { padding: 72px 5%; }

@@ -4,22 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Melitrix, Contact</title>
+<meta name="description" content="Contact Melitrix for development support, manufacturing capacity, licensing conversations, and distribution partnerships. Boston-based, responding within two business days.">
+<link rel="canonical" href="https://melitrix.net/contact.html">
+<link rel="icon" type="image/png" href="assets/melitrix-mark.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0a2540">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Melitrix">
+<meta property="og:title" content="Melitrix, Contact">
+<meta property="og:description" content="For development support, manufacturing capacity, licensing, and distribution partnerships.">
+<meta property="og:url" content="https://melitrix.net/contact.html">
+<meta property="og:image" content="https://melitrix.net/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/shared.css?v=3">
+<link rel="stylesheet" href="assets/shared.css?v=4">
 <style>
   .contact-section { padding: 100px 5%; background: white; }
   .contact-grid {
-    max-width: 1080px;
+    max-width: 1040px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 64px;
     align-items: start;
   }
-  .contact-info {
-    padding: 8px 0;
-  }
-  .info-block { margin-bottom: 36px; }
+  .info-block { margin-bottom: 34px; }
+  .info-block:last-child { margin-bottom: 0; }
   .info-label {
     font-size: 0.72rem;
     letter-spacing: 0.18em;
@@ -42,83 +52,51 @@
     color: var(--slate);
     line-height: 1.65;
     font-weight: 300;
-    margin-top: 4px;
+    margin-top: 6px;
   }
 
-  .form-card {
+  .reasons-card {
     background: var(--paper);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 44px 46px;
+    padding: 40px 40px 36px;
     box-shadow: var(--shadow-sm);
   }
-  .form-card h3 {
+  .reasons-card h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: var(--navy);
     margin-bottom: 8px;
   }
-  .form-card-sub {
-    font-size: 0.9rem;
+  .reasons-card > p {
+    font-size: 0.92rem;
     color: var(--slate);
-    margin-bottom: 28px;
+    line-height: 1.65;
     font-weight: 300;
-    line-height: 1.6;
+    margin-bottom: 24px;
   }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-  .form-field { display: flex; flex-direction: column; gap: 6px; }
-  .form-field.full { grid-column: 1 / -1; }
-  .form-label {
-    font-size: 0.76rem;
-    font-weight: 600;
-    color: var(--slate-dark);
-    letter-spacing: 0.02em;
-  }
-  .form-label .req { color: var(--blue); }
-  .form-input, .form-textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-family: inherit;
+  .reason-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .reason-list li {
+    display: flex; gap: 12px; align-items: flex-start;
     font-size: 0.92rem;
     color: var(--slate-dark);
-    background: white;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    line-height: 1.55;
   }
-  .form-input:focus, .form-textarea:focus {
-    outline: none;
-    border-color: var(--sky);
-    box-shadow: 0 0 0 3px rgba(0,155,222,0.15);
+  .reason-list li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 16px; height: 16px; margin-top: 3px;
+    border-radius: 50%;
+    background: var(--ice);
+    border: 1.5px solid var(--blue);
   }
-  .form-input.error { border-color: #dc2626; }
-  .form-textarea { min-height: 130px; resize: vertical; }
-  .form-error { font-size: 0.74rem; color: #dc2626; display: none; }
-  .form-field.has-error .form-error { display: block; }
+  .reason-list strong { color: var(--navy); font-weight: 600; }
+  .reasons-cta { margin-top: 30px; }
 
-  .form-actions {
-    display: flex; justify-content: flex-end;
-    margin-top: 22px;
-  }
-  .form-success {
-    display: none;
-    padding: 18px 22px;
-    background: #f0fdf4;
-    border: 1px solid #86efac;
-    border-radius: 8px;
-    color: #15803d;
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-top: 18px;
-  }
-  .form-success.visible { display: block; }
-
-  @media (max-width: 900px) {
-    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-    .form-row { grid-template-columns: 1fr; }
-    .form-card { padding: 32px 28px; }
+  @media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+    .reasons-card { padding: 32px 28px; }
   }
 </style>
 </head>
@@ -135,67 +113,41 @@
     </div>
     <div class="eyebrow reveal">Get in Touch</div>
     <h1 class="reveal reveal-delay-1">Let's start a conversation.</h1>
-    <p class="page-sub reveal reveal-delay-2">Send us a note and a member of our team will respond within two business days.</p>
+    <p class="page-sub reveal reveal-delay-2">Email us a few lines about what you are working on. The right person will respond, usually within two business days.</p>
   </div>
 </header>
 
-<section class="contact-section" data-screen-label="Contact / Form">
+<section class="contact-section" data-screen-label="Contact / Details">
   <div class="contact-grid">
 
     <div class="contact-info reveal">
       <div class="info-block">
         <div class="info-label">Email</div>
         <div class="info-value"><a href="mailto:info@melitrix.net">info@melitrix.net</a></div>
-        <p class="info-sub">For partnerships, investor inquiries, media, and general questions.</p>
+        <p class="info-sub">Partnerships, development and manufacturing inquiries, licensing, distribution, media, and general questions all reach us here.</p>
       </div>
       <div class="info-block">
         <div class="info-label">Office</div>
-        <div class="info-value">361 Newbury St, 5th Floor<br>Boston, MA 02115</div>
+        <div class="info-value">361 Newbury Street, 5th Floor<br>Boston, MA 02115</div>
         <p class="info-sub">By appointment only.</p>
       </div>
       <div class="info-block">
         <div class="info-label">Careers</div>
-        <div class="info-value"><a href="careers.html">View open roles →</a></div>
-        <p class="info-sub">We hire operators with rigor, range, and conviction.</p>
+        <div class="info-value"><a href="careers.html">See how we hire &rarr;</a></div>
+        <p class="info-sub">We keep a short list of operators to work with as the platform scales.</p>
       </div>
     </div>
 
-    <div class="form-card reveal reveal-delay-1">
-      <h3>Send a message</h3>
-      <p class="form-card-sub">Tell us a bit about you and your interest. The right team member will follow up.</p>
-      <form id="contact-form" novalidate>
-        <div class="form-row">
-          <div class="form-field">
-            <label class="form-label">Full name <span class="req">*</span></label>
-            <input class="form-input" type="text" name="name" required>
-            <div class="form-error">Please enter your name.</div>
-          </div>
-          <div class="form-field">
-            <label class="form-label">Organization</label>
-            <input class="form-input" type="text" name="org">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-field full">
-            <label class="form-label">Email <span class="req">*</span></label>
-            <input class="form-input" type="email" name="email" required>
-            <div class="form-error">Please enter a valid email.</div>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-field full">
-            <label class="form-label">Message <span class="req">*</span></label>
-            <textarea class="form-textarea" name="message" required></textarea>
-            <div class="form-error">Please share a few words.</div>
-          </div>
-        </div>
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Send →</button>
-        </div>
-        <div class="form-success" id="form-success">
-          Thank you, your message has been received. We'll respond within two business days.
-        </div>
-      </form>
+    <div class="reasons-card reveal reveal-delay-1">
+      <h3>What people reach out about</h3>
+      <p>A short note is enough to start. If you can, mention the product form, the market, and where you are in the process.</p>
+      <ul class="reason-list">
+        <li><span><strong>Development support</strong>, regulatory strategy, formulation, or getting a product toward approval.</span></li>
+        <li><span><strong>Manufacturing capacity</strong>, sterile injectables, liquids, solid dose, or semi-solids.</span></li>
+        <li><span><strong>Licensing &amp; co-development</strong>, in-licensing or out-licensing a program or product.</span></li>
+        <li><span><strong>Distribution</strong>, taking our pipeline or consumer health range into a new territory.</span></li>
+      </ul>
+      <a href="mailto:info@melitrix.net?subject=Inquiry%20via%20melitrix.net" class="btn btn-primary reasons-cta">Email info@melitrix.net &rarr;</a>
     </div>
 
   </div>
@@ -206,27 +158,6 @@
 
 <script src="assets/chrome.js"></script>
 <script src="assets/shared.js"></script>
-<script>
-  MelitrixChrome.mount('contact');
-  const form = document.getElementById('contact-form');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let valid = true;
-    form.querySelectorAll('[required]').forEach(input => {
-      const field = input.closest('.form-field');
-      const v = input.value.trim();
-      let ok = v.length > 0;
-      if (input.type === 'email') ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-      field.classList.toggle('has-error', !ok);
-      input.classList.toggle('error', !ok);
-      if (!ok) valid = false;
-    });
-    if (valid) {
-      document.getElementById('form-success').classList.add('visible');
-      form.reset();
-      setTimeout(() => document.getElementById('form-success').classList.remove('visible'), 6000);
-    }
-  });
-</script>
+<script>MelitrixChrome.mount('contact');</script>
 </body>
 </html>
